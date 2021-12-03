@@ -1,5 +1,5 @@
 import {cityMaker} from './sketches/sketch';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import {p5} from 'p5';
 
 const App = () => {
