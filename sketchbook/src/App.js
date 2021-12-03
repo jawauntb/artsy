@@ -2,7 +2,7 @@
 import dynamic from "next/dynamic";
 import { makeCity } from "./helpers/cityHelpers";
 // import RalewayDots from "./assets/fonts/RalewayDots-Regular.otf";
-
+// import Sketch from "react-p5";
 const Sketch = dynamic(() => import("react-p5").then((mod) => mod.default), {
   ssr: false,
 });
@@ -39,10 +39,11 @@ const App = () => {
     s.noStroke();
     s.fill(0);
     s.rect(1200, s.height - 100, s.width, 100);
-    makeCity(s.random(100), -1 * s.random(20), s);
-    makeCity(100, 45);
-    makeCity(15, -10);
-    makeCity(89, 23);
+    makeCity(40, -5, s);
+    // makeCity(s.random(100), -1 * s.random(20), s);
+    makeCity(100, 45, s);
+    makeCity(15, -10, s);
+    makeCity(89, 23, s);
   };
 
   return (
