@@ -18,16 +18,15 @@ function setup() {
   frameRate(15)
   createLoop({
     duration:10,
-    framesPerSecond: random(8,22),
     gif:{
       render:true,
       fileName:'city'+counter.toString()+'.gif',
       startLoop:0,
       endLoop:22,
-      download:true,
+      // download:true,
     }
   })
-  animLoop.noiseFrequency(0.4)
+  // animLoop.noiseFrequency(0.4)
   // noLoop()
 }
 var nightBlue = (0, 24, 72)
