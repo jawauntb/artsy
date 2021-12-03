@@ -8,7 +8,14 @@ function preload() {
 }
 
 function setup() {
-
+  var lightgrn = lerpColor(color('white'), color(techGreen), random(45)/50);
+  var lerpedback = lerpColor(color(purNigthSky), color(bluesteel), random(700)/random(10,800));
+  var backcolor = lerpColor(lerpedback, color('black'), random(3700)/random(16,4000))
+  var lightsteel = lerpColor(color(offwhite), color(bluesteel), random(700));
+  var nightsteel = lerpColor(color(bluesteel), color(darkSteel), random(700));
+  var aqua = lerpColor(color(bluesteel), color(techGreen), random(700)/random(10,800));
+  var lightgrn = lerpColor(color('white'), color(techGreen), random(700)/random(10,800));
+  var allSteels = [lightsteel, nightsteel, aqua, lightgrn]
   let cnv = createCanvas(1400, 1400, WEBGL);
   // Set text characteristics
   textFont(font);
@@ -17,8 +24,8 @@ function setup() {
   frameRate(15)
   createLoop({
     duration:10,
-    framesPerSecond: random(9.20),
-    gif:{
+    // framesPerSecond: random(10),
+      gif:{
       render:true,
       fileName:'city' + Math.floor(random(10)).toString()+'.gif',
       startLoop:0,
@@ -151,7 +158,7 @@ function addWindowLight(bW, bH, k,j, tmp){
 function drawSun(val) {
   var color = arbitraryRule(3)? arbitraryRule(5)? arbitraryRule(8)? 'yellow': lightYellow: orangeLights : offwhite
   fill(color)
-  ellipse(-1*random(400,500) , -1*random(400,430), random(2,50))
+  ellipse(random(20,300) , -1*random(10,100), random(2,100))
 }
 
 function randomFills(){
