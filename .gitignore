@@ -4,8 +4,10 @@
 /node_modules
 /.pnp
 .pnp.js
-
-
+.prettierrc
+.prettierignore
+.eslintrc
+package-lock.json
 # testing
 /coverage
 
