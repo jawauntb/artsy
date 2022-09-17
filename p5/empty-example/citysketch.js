@@ -25,16 +25,29 @@ var lightColors = [litBuildingTop]
 
 function setup() {
 	createCanvas(800, 500);
-	// frameRate(14)s
+	frameRate(2);
 	// noLoop();
 }
 // var counter = 0
 
 function draw() {
-	var lerpedback = lerpColor(color('#D48ECD'), color('darkblue'), random(180) / random(10, 830));
-	var backcolor = lerpColor(lerpedback, color(lightYellow), random(300
-	) / random(16, 400))
-  	background(backcolor);
+	// make a new color object
+	var lerpedback = lerpColor(color('pink'), color('skyblue'), random(180) / random(10, 830));
+	// make a background color;
+	var backcolor = lerpColor(lerpedback, color('black'), random(300
+	) / random(9, 88));
+	var ooo = lerpColor(backcolor, color('darkblue'), random(300
+	) / random(600));
+	var lll = lerpColor(ooo, backcolor, random(-50, 600
+	) / random(11, 200));
+	// var otherColors =  ['black', 'grey', 'orange', '#e4533b', purNigthSky, lightYellow]
+	// var oidx = random(otherColors.length - 1);
+	// var newclr = otherColors[oidx];
+	// // var cc = color(newclr);
+	var choices = [lerpedback, backcolor];
+	var coloridxx = random(choices.length - 1);
+	var colur = choices[coloridxx];
+  	background(lll);
 	noFill();
 	stroke(255);
 	// for (var i=0; i < 50; i++) {
@@ -43,16 +56,36 @@ function draw() {
 	// 	text(random(2), random(width-width*2+20, height), height);
 	// }
 	noStroke();
+	// makeShimmer();
 	fill(0);
-	// rect(0, height - 1, width, 1);
-	// makeCity(random(40), random(107));
-	makeCity(random(19, 50), random(-22));
-	makeCity(random(11, 22), random(20));
-	makeCity(random(33, 36), random(-10));
-	makeCity(random(20, 24), -60);
-	makeCity(random(18, 30), 30);
+	
+// rect(0, height - 1, width, 1);
+	makeCity(random(88), random(-76, 55));
+	makeCity(random(289), random(-55, 400));
+	makeCity(random(500), random(-22, 88));
+	makeCity(random(266), random(500));
+	makeCity(random(155), random(-33));
+	makeCity(random(88), random(350));
+	makeCity(random(77), random(-77));
+	makeCity(random(60), random(107, 1000));
+	makeCity(random(50), random(-22, 88));
+	makeCity(random(34), random(20));
+	makeCity(random(77), random(-55, 89));
+	makeCity(random(22), random(-200, 200));
+	makeCity(random(17), random(-10, 80));
+	makeCity(random(12), random(40));
+
+	// makeCity(random(20, 24), -60);
+	// makeCity(random(8, 30), 30);
 	//saveCanvas("test", "jpg");
 	// counter++
+}
+
+function makeShimmer(){
+  ambientLight(random(233));
+  directionalLight(lightYellow, random(20, width/2), random(100, height/2), random(280));
+  specularMaterial(random(240, 250));
+  shininess(400);
 }
 
 function makeCity(bN, off) {
@@ -65,8 +98,6 @@ function makeCity(bN, off) {
 	var allSteels = [
 		lightsteel,
 		nightsteel,
-		aqua,
-		lightgrn,
 		color('black'),
 		color('grey'),
 		color('#1B1725'),
@@ -82,6 +113,7 @@ function makeCity(bN, off) {
 		color(nightBlue),
 		color(lightYellow),
 		color('darkblue'),
+		color('beige')
 	]
 	for (var i = 0; i < bN; i++) {
 		// var fll = lerpColor(color(0,0,0), backcolor, bN/50);
@@ -93,11 +125,13 @@ function makeCity(bN, off) {
 		rect(tmp + 5, height - 100 - bH, bW - 10, bH);
 		for (var k = 0; k < bH - 40; k += 10) {
 			for (var j = 0; j < bW - 10; j += (bW-10)/5) {
-				var a = random(0, 255);
+				var a = random(0, 200);				
 				var b = random(0, 200);
-				var c = random(0, 255);
-				stroke(a, a, c);
-				strokeWeight(bW*0.05);
+				var c = random(0, 200);
+				var d = a + (!!(random(0, 2)) ? random(75) : 0);
+				var e = a + (!!(random(0, 2)) ? 0: random(15));
+				stroke(d, e, c);
+				strokeWeight(bW * 0.05);
 				point(tmp+5+j+((bW-10)/5)/2, height-100-bH+20+k);
 			}
 		}
