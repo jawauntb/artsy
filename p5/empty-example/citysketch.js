@@ -25,32 +25,32 @@ var lightColors = [litBuildingTop]
 
 function setup() {
 	createCanvas(800, 500);
-	frameRate(90)
+	// frameRate(14)s
 	// noLoop();
 }
 // var counter = 0
 
 function draw() {
-	var lerpedback = lerpColor(color('#D48ECD'), color('skyblue'), random(500) / random(10, 830));
+	var lerpedback = lerpColor(color('#D48ECD'), color('darkblue'), random(180) / random(10, 830));
 	var backcolor = lerpColor(lerpedback, color(lightYellow), random(300
 	) / random(16, 400))
   	background(backcolor);
 	noFill();
 	stroke(255);
-	for (var i=0; i < 1400; i++) {
-		strokeWeight(random(1, 15));
-    	stroke(whiteStar)
-		text(random(2), random(width-width*2+20, height), height);
-	}
+	// for (var i=0; i < 50; i++) {
+	// 	strokeWeight(6);
+    // 	stroke(whiteStar)
+	// 	text(random(2), random(width-width*2+20, height), height);
+	// }
 	noStroke();
 	fill(0);
-	rect(0, height - 3, width, 2);
-	makeCity(random(40), random(107));
-	makeCity(random(30), random(-22));
-	makeCity(random(70), random(20));
-	makeCity(random(45), random(-10));
-	makeCity(random(40), -100);
-	makeCity(random(30), 30);
+	// rect(0, height - 1, width, 1);
+	// makeCity(random(40), random(107));
+	makeCity(random(19, 50), random(-22));
+	makeCity(random(11, 22), random(20));
+	makeCity(random(33, 36), random(-10));
+	makeCity(random(20, 24), -60);
+	makeCity(random(18, 30), 30);
 	//saveCanvas("test", "jpg");
 	// counter++
 }
