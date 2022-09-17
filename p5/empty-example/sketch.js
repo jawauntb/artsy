@@ -1,5 +1,5 @@
 let font,
-  fontsize = 15;
+  fontsize = 22;
 
 function preload() {
   // Ensure the .ttf or .otf font stored in the assets directory
@@ -15,19 +15,19 @@ function setup() {
   textFont(font);
   textSize(fontsize);
   textAlign(CENTER, CENTER);
-  frameRate(15)
-  createLoop({
-    duration:10,
-    framesPerSecond: random(8,22),
-    gif:{
-      render:true,
-      fileName:'city'+counter.toString()+'.gif',
-      startLoop:0,
-      endLoop:22,
-      download:true,
-    }
-  })
-  animLoop.noiseFrequency(0.4)
+  frameRate(90)
+  // createLoop({
+  //   duration:10,
+  //   framesPerSecond: random(8,22),
+  //   gif:{
+  //     render:true,
+  //     fileName:'city'+counter.toString()+'.gif',
+  //     startLoop:0,
+  //     endLoop:22,
+  //     download:true,
+  //   }
+  // })
+  // animLoop.noiseFrequency(0.4)
   // noLoop()
 }
 var nightBlue = (0, 24, 72)
@@ -63,25 +63,21 @@ function draw() {
 	for (var i=0; i < 1400; i++) {
 		strokeWeight(random(1, 15));
     stroke(whiteStar)
-		text(random(2), random(width-width*2+20, height));
+		text(random(2), random(width-width*2+20, height), height);
 	}
 	noStroke();
 	fill(0);
 	rect(1200, height - 100, width, 100);
-  makeCity(random(-120,30), random(-50, 35));
+  // makeCity(random(-120,3000), random(-50, 305));
   makeCity(40, -5);
-  // makeCity(80, 47);
-  makeCity(random(1000), random(-10, 25));
-  // makeCity(20, -800);
-  // makeCity(random(30), 10);
-	// makeCity(random(56,80), -1300);
-  // makeCity(random(30), random(-6,-10));
+  makeCity(random(50, 1000), random(-10, 250));
+
   counter++
 }
 
 function makeShimmer(){
   ambientLight(random(233));
-  directionalLight(offwhite, random(20, width/2), random(100, height/2), random(70));
+  directionalLight(lightYellow, random(20, width/2), random(100, height/2), random(280));
   specularMaterial(random(240, 250));
   shininess(400);
 }
@@ -97,7 +93,7 @@ function fillCoordWithDigits(x, y, w, h, colory, increment){
     for (var xc=0; xc<w-10; xc+=w/(increment/2)){
     // for each point within bounds, draw a number between 0 and random range,
     //increment points after
-      var colorIdx = floor(random(colory.length))
+      var colorIdx = floor(random(colory.length-1))
       var num2sho = floor(random(2))
       createCharAtPositionInColor(xc, yc, num2sho, colory[colorIdx])
     }
@@ -110,18 +106,19 @@ function makeCity(bN, off) {
 	for (var i = 0; i < bN; i++) {
     lightsteel = lerpColor(color(offwhite), color(bluesteel), bN/50);
     nightsteel = lerpColor(color(bluesteel), color(darkSteel), bN/50);
-    lightgrn = lerpColor(color('white'), color(techGreen), bN/50);
+    lightgrn = lerpColor(color('blue'), color(techGreen), bN/50);
     aqua = lerpColor(color(bluesteel), color(techGreen), bN/50);
     var allSteels = [lightsteel, nightsteel, aqua, lightgrn]
     var bH = random(10, height + 100)
-    let rx = tmp + random(5)
+    let rx = tmp + random(50)
     let ry = height - random(95,100) - bH
-    let rw = bW - random(10,11)
+    let rw = bW - random(10,101)
     let rh = bH
     fill(nightsteel)
     noStroke()
     // rect(rx, ry, rw, rh)
-    fillCoordWithDigits(rx, ry, rw, rh, allSteels, 10)
+    fillCoordWithDigits(rx, ry, rw, rh, allSteels, 100)
+
 
 		for (var k = 0; k < bH - 40; k += 10) {
 			for (var j = 0; j < bW - 10; j += (bW-10)/5) {
@@ -130,8 +127,9 @@ function makeCity(bN, off) {
 		}
     var c = random(100) < 50? topRedLight: 'black';
     stroke(c)
-    point((bW-bW/2), bH+1)
-		tmp += bW;
+    point(random(bW-bW/2), random(bH+1))
+    tmp += bW;
+
 	}
 }
 

@@ -4,9 +4,9 @@ var d1 = 100;
 var d2 = 100;
 
 function setup() {
-  createCanvas(600, 400);
+  createCanvas(1400, 1000);
   background(0);
-  frameRate(22)
+  frameRate(85)
   createLoop({duration:15,gif:true})
   //saveFrames("aa","png",15,22);
 }
